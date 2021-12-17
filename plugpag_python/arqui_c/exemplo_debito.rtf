@@ -1,0 +1,142 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red43\green145\blue175;\red0\green128\blue0;
+\red163\green21\blue21;\red47\green79\blue79;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c100000;\csgenericrgb\c16863\c56863\c68627;\csgenericrgb\c0\c50196\c0;
+\csgenericrgb\c63922\c8235\c8235;\csgenericrgb\c18431\c30980\c30980;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\pardeftab708\partightenfactor0
+
+\f0\fs19 \cf2 int\cf0  ret;
+\f1\fs24 \
+\pard\pardeftab708\partightenfactor0
+
+\f0\fs19 \cf0 	\cf3 tyComPort\cf0  comPort;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 enPPPSPaymentMethod\cf0  paymentMethod;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 enPPPSInstallmentType\cf0  installmentType;
+\f1\fs24 \
+
+\f0\fs19 	\cf2 unsigned\cf0  \cf2 int\cf0  installment;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 tyAmount\cf0  amount;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 tyUserReference\cf0  userReference;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 tyAppName\cf0  appName;
+\f1\fs24 \
+
+\f0\fs19        \cf3 tyAppVersion \cf0 appVersion;
+\f1\fs24 \
+
+\f0\fs19 	\cf3 stPPPSTransactionResult\cf0  transactionResult;
+\f1\fs24 \
+
+\f0\fs19 \
+	memset ((\cf2 void\cf0 *) comPort, 0, \cf2 sizeof\cf0  (\cf3 tyComPort\cf0 ));
+\f1\fs24 \
+
+\f0\fs19 	memset ((\cf2 void\cf0 *) amount, 0, \cf2 sizeof\cf0  (\cf3 tyAmount\cf0 ));
+\f1\fs24 \
+
+\f0\fs19 	memset ((\cf2 void\cf0 *) userReference, 0, \cf2 sizeof\cf0  (\cf3 tyUserReference\cf0 ));
+\f1\fs24 \
+
+\f0\fs19 	memset ((\cf2 void\cf0 *) appName, 0, \cf2 sizeof\cf0  (\cf3 tyAppName\cf0 ));
+\f1\fs24 \
+
+\f0\fs19 	memset ((\cf2 void\cf0 *) appVersion, 0, \cf2 sizeof\cf0  (\cf3 tyAppVersion\cf0 ));
+\f1\fs24 \
+
+\f0\fs19 \
+	
+\f1\fs24 \
+
+\f0\fs19 	\cf4 // Porta COM11 est\'e1 com a Moderninha Pro pareada no Bluetooth
+\f1\fs24 \cf0 \
+
+\f0\fs19 	memcpy (comPort, \cf5 "COM11"\cf0 , 5);
+\f1\fs24 \
+
+\f0\fs19 \
+	\cf4 // Pagamento no d\'e9bito
+\f1\fs24 \cf0 \
+
+\f0\fs19 	paymentMethod = \cf6 PPPAGSEGURO_DEBIT\cf0 ;
+\f1\fs24 \
+
+\f0\fs19 	\cf4 // A vista (1 parcela)
+\f1\fs24 \cf0 \
+
+\f0\fs19 	installmentType = \cf6 PPPAGSEGURO_A_VISTA\cf0 ;
+\f1\fs24 \
+
+\f0\fs19 	installment = 1;
+\f1\fs24 \
+
+\f0\fs19 \
+	\cf4 // R$ 30,00 Reais
+\f1\fs24 \cf0 \
+
+\f0\fs19 	memcpy (amount, \cf5 "3000"\cf0 , 4);
+\f1\fs24 \
+
+\f0\fs19 \
+	\cf4 // Meu c\'f3digo de venda \'e9 "0000000001"
+\f1\fs24 \cf0 \
+
+\f0\fs19 	memcpy (userReference, \cf5 "0000000001"\cf0 , 10);
+\f1\fs24 \
+
+\f0\fs19 \
+	InitBTConnection (comPort);
+\f1\fs24 \
+
+\f0\fs19 \
+	\cf4 // Setar o nome e vers\'e3o da aplica\'e7\'e3o
+\f1\fs24 \cf0 \
+
+\f0\fs19 	memcpy (appName, \cf5 "MyApplication"\cf0 , 13);
+\f1\fs24 \
+
+\f0\fs19 	memcpy (appVersion, \cf5 "R001"\cf0 , 4);
+\f1\fs24 \
+
+\f0\fs19 	SetVersionName(appName, appVersion);
+\f1\fs24 \
+
+\f0\fs19 \
+\
+	SetVersionName (comPort);
+\f1\fs24 \
+
+\f0\fs19 \
+	ret = SimplePaymentTransaction (
+\f1\fs24 \
+
+\f0\fs19 		paymentMethod,
+\f1\fs24 \
+
+\f0\fs19 		installmentType,
+\f1\fs24 \
+
+\f0\fs19 		installment,
+\f1\fs24 \
+
+\f0\fs19 		&amount,
+\f1\fs24 \
+
+\f0\fs19 		&userReference,
+\f1\fs24 \
+
+\f0\fs19 		&transactionResult
+\f1\fs24 \
+
+\f0\fs19 	);}

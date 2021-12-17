@@ -1,0 +1,29 @@
+[
+b'', 
+b'Resultado da transa\xc3\xa7\xc3\xa3o', 
+b'message [Transacao realizada com sucesso]', 
+b'transactionCode [FBC53027BB8549D6BDE0F9BA0DD5A85E]', 
+b'date [2021-12-09]', 
+b'time [14:43:55]', 
+b'hostNsu [120953622365]', 
+b'cardBrand [MASTERCARD]', 
+b'bin [552693]', 
+b'holder [1430]', 
+b'user reference [CODIGO002]'
+]
+
+[
+b'', 
+b'Resultado da transacao', 
+b'message [Transacao realizada com sucesso]', 
+b'transactionCode [E31F4E45DE3B42E59F4681A1259C624F]', 
+b'date [2021-12-09]', 
+b'time [14:54:42]', 
+b'hostNsu [120901222367]', 
+b'cardBrand [MASTERCARD]', 
+b'bin [552693]', 
+b'holder [1430]', 
+b'user reference [CODIGO002]', 
+b'rawBuffer []', 
+b' terminalSerialNumber [6K247349]'
+]
