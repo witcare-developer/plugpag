@@ -8,7 +8,7 @@ stPPPSTransactionResult transactionResult;
 
 void pResult (stPPPSTransactionResult transactionResult)
 {
-	printf ("\nResultado da transacao\nmessage [%s]\ntransactionCode [%s]\ndate [%s]\ntime [%s]\nhostNsu [%s]\ncardBrand [%s]\nbin [%s]\nholder [%s]\nuser reference [%s]\nrawBuffer [%s]\nterminalSerialNumber [%s]",
+	printf ("Resultado da transacao\nmessage [%s]\ntransactionCode [%s]\ndate [%s]\ntime [%s]\nhostNsu [%s]\ncardBrand [%s]\nbin [%s]\nholder [%s]\nuser reference [%s]\nrawBuffer [%s]\nterminalSerialNumber [%s]",
 			transactionResult.message,
 			transactionResult.transactionCode,
 			transactionResult.date,
